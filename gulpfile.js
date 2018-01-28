@@ -47,7 +47,7 @@ function taskBrowserify(opts) {
 		.bundle();
 }
 
-gulp.task("browserify:debug", ["lint"], function() {
+gulp.task("browserify:debug", [], function() {
 	return taskBrowserify({debug:true, standalone:"SimpleMDE"})
 		.pipe(source("simplemde.debug.js"))
 		.pipe(buffer())
@@ -55,7 +55,7 @@ gulp.task("browserify:debug", ["lint"], function() {
 		.pipe(gulp.dest("./debug/"));
 });
 
-gulp.task("browserify", ["lint"], function() {
+gulp.task("browserify", [], function() {
 	return taskBrowserify({standalone:"SimpleMDE"})
 		.pipe(source("simplemde.js"))
 		.pipe(buffer())
@@ -63,7 +63,7 @@ gulp.task("browserify", ["lint"], function() {
 		.pipe(gulp.dest("./debug/"));
 });
 
-gulp.task("scripts", ["browserify:debug", "browserify", "lint"], function() {
+gulp.task("scripts", ["browserify:debug", "browserify"], function() {
 	var js_files = ["./debug/simplemde.js"];
 	
 	return gulp.src(js_files)
